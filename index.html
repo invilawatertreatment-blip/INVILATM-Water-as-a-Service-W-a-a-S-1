@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invila - Water as a Service</title>
+    <title>Invila - Water as a Service | Industrial Partner</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Serif:wght@700;900&display=swap" rel="stylesheet">
     <style>
@@ -20,14 +20,12 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Fix scroll lock untuk mobile */
+        /* Fix scroll lock untuk stabilitas UI */
         body.modal-open {
             overflow: hidden;
-            position: fixed;
-            width: 100%;
+            height: 100vh;
         }
 
-        /* --- HEADER LAYOUT --- */
         .main-header {
             background-color: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
@@ -45,21 +43,6 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         }
 
-        .header-border {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(to right, 
-                transparent 0%, 
-                rgba(37, 99, 235, 0.1) 20%, 
-                rgba(37, 99, 235, 0.3) 50%, 
-                rgba(37, 99, 235, 0.1) 80%, 
-                transparent 100%
-            );
-        }
-
         .brand-text {
             font-family: 'Noto Serif', serif;
             color: #000000;
@@ -68,44 +51,12 @@
             font-weight: 900;
         }
 
-        .tagline-container {
-            display: flex;
-            align-items: center;
-            margin-top: 4px;
-        }
-
-        .tagline-blue {
-            color: var(--brand-blue);
-            font-weight: 800;
-            letter-spacing: 0.2em;
-            font-size: clamp(9px, 1vw, 11px);
-            text-transform: uppercase;
-        }
-
-        .tagline-waas {
-            font-family: 'Noto Serif', serif;
-            color: #000000;
-            font-weight: 700;
-            font-size: clamp(10px, 1.2vw, 13px);
-            margin-left: 8px;
-        }
-
         .nav-link {
             font-size: 11px;
             font-weight: 700;
             color: var(--brand-gray);
             transition: all 0.3s ease;
             letter-spacing: 0.05em;
-        }
-
-        .nav-link:hover {
-            color: var(--brand-blue);
-        }
-
-        .nav-separator {
-            color: #e2e8f0;
-            font-weight: 300;
-            margin: 0 12px;
         }
 
         .btn-cta {
@@ -121,48 +72,11 @@
             text-transform: uppercase;
         }
 
-        .btn-cta:hover {
-            background-color: #1d4ed8;
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.4);
-        }
-
-        .logo-box {
-            width: clamp(6rem, 12vw, 9rem);
-            height: auto;
-            transition: all 0.4s ease;
-        }
-
-        /* --- CONTENT STYLES --- */
         .problem-box {
             background-color: #fffafa;
             border: 1px solid #fee2e2;
             border-radius: 40px;
             padding: 3.5rem;
-            position: relative;
-        }
-
-        .eyebrow-red {
-            color: #dc2626;
-            font-weight: 800;
-            letter-spacing: 0.15em;
-            font-size: 11px;
-            text-transform: uppercase;
-        }
-
-        .eyebrow-blue {
-            color: var(--brand-blue);
-            font-weight: 800;
-            letter-spacing: 0.15em;
-            font-size: 11px;
-            text-transform: uppercase;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: -0.04em;
         }
 
         .pain-point-item {
@@ -180,294 +94,119 @@
         .pain-point-item:hover {
             background: rgba(220, 38, 38, 0.08);
             transform: translateX(5px);
-            border-left-color: rgba(220, 38, 38, 0.8);
+            border-left-color: #dc2626;
         }
 
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            background-color: var(--brand-blue);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-
-        .value-card {
-            background-color: #f8fafc;
-            border: 1px solid #f1f5f9;
-            border-radius: 32px;
-            padding: 2.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .value-card:hover {
-            background-color: #ffffff;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-            transform: translateY(-5px);
-        }
-
-        /* --- MODAL STYLES --- */
         #pain-modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             z-index: 2000;
             align-items: center;
             justify-content: center;
             padding: 20px;
         }
 
-        #pain-modal.active {
-            display: flex;
-        }
+        #pain-modal.active { display: flex; }
 
         .modal-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.6);
+            inset: 0;
+            background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(8px);
         }
 
         .modal-content {
             background: white;
             width: 100%;
-            max-width: 650px;
+            max-width: 600px;
             border-radius: 32px;
             padding: 3rem;
             position: relative;
             z-index: 10;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             transform: scale(0.95);
             opacity: 0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
         }
 
         #pain-modal.active .modal-content {
             transform: scale(1);
             opacity: 1;
         }
-
-        .close-modal {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            background: #f8fafc;
-            color: #64748b;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .close-modal:hover {
-            background: #f1f5f9;
-            color: #0f172a;
-        }
-
-        .modal-body h3 {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .modal-body p {
-            font-size: 1.1rem;
-            color: #475569;
-            line-height: 1.7;
-        }
     </style>
 </head>
 <body>
 
     <header class="main-header" id="header">
-        <div class="max-w-[1440px] mx-auto px-6 md:px-12 text-black">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12">
             <div class="flex items-center justify-between">
                 <a href="/" class="flex items-center group">
-                    <div class="logo-box flex items-center justify-center">
-                        <svg viewBox="0 0 100 125" class="w-full h-full" fill="#2563eb">
+                    <div class="w-[180px] h-[50px] flex items-center justify-start overflow-hidden">
+                        <img src="LOGO INVILA 2026.png" alt="Logo Invila" class="h-full object-contain" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <svg viewBox="0 0 100 125" class="h-full hidden" fill="#2563eb">
                             <path d="M50 0C25 45 15 65 15 85C15 107 30 125 50 125C70 125 85 107 85 85C85 65 75 45 50 0Z"/>
                         </svg>
                     </div>
-                    <div class="flex flex-col ml-1 md:ml-2">
-                        <span class="brand-text text-3xl md:text-5xl uppercase">
-                            INVILA<span class="text-[0.4em] align-top ml-0.5 font-bold">TM</span>
-                        </span>
-                        <div class="tagline-container">
-                            <span class="tagline-blue">Water as a Service</span>
-                            <span class="tagline-waas">(W a a S)</span>
-                        </div>
-                    </div>
                 </a>
 
-                <div class="hidden lg:flex items-center space-x-12">
-                    <nav class="flex items-center">
+                <div class="hidden lg:flex items-center space-x-8">
+                    <nav class="flex items-center space-x-6">
                         <a href="#" class="nav-link uppercase">ZERO CAPEX</a>
-                        <span class="nav-separator">|</span>
                         <a href="#" class="nav-link uppercase">SOLUTIONS</a>
-                        <span class="nav-separator">|</span>
-                        <a href="#" class="nav-link uppercase">PROVEN RESULTS</a>
-                        <span class="nav-separator">|</span>
                         <a href="#" class="nav-link uppercase">SCADA-IOT</a>
                     </nav>
-                    <a href="#contact" class="btn-cta">HUBUNGI PARTNER</a>
+                    <a href="https://wa.me/628123456789" class="btn-cta">HUBUNGI PARTNER</a>
                 </div>
-
-                <button class="lg:hidden p-2 text-slate-800" id="menu-toggle">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
             </div>
         </div>
-        <div class="header-border"></div>
     </header>
 
     <main class="pt-48 pb-32">
-        <section class="container mx-auto px-6 mb-32">
-            <div class="max-w-5xl mx-auto text-center mb-16">
-                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-[10px] font-bold tracking-widest uppercase mb-10">
-                    <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
-                    </span>
-                    <span class="text-blue-600">Water Transformation Provider</span>
-                    <span class="text-slate-400">|</span>
-                    <span class="text-black">Zero-Capex Water Infrastructure</span>
-                </div>
-
-                <h1 class="hero-title text-slate-900 mb-8">
-                    Dari Air Limbah Menjadi <br>
-                    <span class="text-blue-600">Air Bersih yang Bernilai.</span>
-                </h1>
-
-                <p class="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed mb-12">
-                    <strong>Invila™</strong> mengubah air limbah industri dari beban operasional menjadi pasokan air bersih bernilai dengan skema <strong>Zero-CAPEX pay as you use</strong>.
-                </p>
+        <section class="container mx-auto px-6 text-center mb-32">
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-[10px] font-bold tracking-widest uppercase mb-10 text-blue-600">
+                <span>Industrial Water Infrastructure Partner</span>
             </div>
-
-            <div class="max-w-6xl mx-auto">
-                <div class="problem-box">
-                    <span class="eyebrow-red mb-6 block">Risiko Utilitas Industri</span>
-                    <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 leading-tight mb-8">
-                        Sistem air Anda saat ini adalah <strong>lubang hitam finansial</strong>. Setiap biaya tak terukur pada utilitas dan kimia adalah profit yang terbuang sia-sia.
-                    </h2>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-                        <div class="pain-point-item" onclick="openPainModal(1)">
-                            <span class="text-red-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                            </span>
-                            <span class="text-slate-800 font-bold text-sm">Eskalasi Harga Air PDAM Industri</span>
-                        </div>
-                        <div class="pain-point-item" onclick="openPainModal(2)">
-                            <span class="text-red-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                            </span>
-                            <span class="text-slate-800 font-bold text-sm">Pengetatan & Pengurangan Kuota ABT</span>
-                        </div>
-                        <div class="pain-point-item" onclick="openPainModal(3)">
-                            <span class="text-red-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            </span>
-                            <span class="text-slate-800 font-bold text-sm">Dampak Finansial Downtime Operasional</span>
-                        </div>
-                        <div class="pain-point-item" onclick="openPainModal(4)">
-                            <span class="text-red-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                            </span>
-                            <span class="text-slate-800 font-bold text-sm">Dilema Upgrade Sistem vs CAPEX Berat</span>
-                        </div>
-                        <div class="pain-point-item" onclick="openPainModal(5)">
-                            <span class="text-red-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                            </span>
-                            <span class="text-slate-800 font-bold text-sm">Risiko Compliance & Integritas Reputasi</span>
-                        </div>
-                        <div class="pain-point-item" onclick="openPainModal(6)">
-                            <span class="text-red-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                            </span>
-                            <span class="text-slate-800 font-bold text-sm">Kompleksitas Pengelolaan & Beban SDM</span>
-                        </div>
-                    </div>
-
-                    <p class="text-lg md:text-xl text-slate-600 font-semibold italic">
-                        "Sistem yang hanya menjadi Cost Center akan terus menguras arus kas tanpa memberi nilai balik operasional."
-                    </p>
-                </div>
-
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-5 mt-12">
-                    <button class="px-12 py-5 bg-blue-600 text-white font-bold rounded-full shadow-2xl shadow-blue-200 hover:bg-blue-700 transition-all text-sm tracking-wide uppercase">
-                        Jadwalkan Visit Factory
-                    </button>
-                    <button class="px-12 py-5 border-2 border-slate-200 text-slate-800 font-bold rounded-full hover:bg-slate-50 transition-all text-sm tracking-wide uppercase">
-                        Pelajari Infrastructure Partner
-                    </button>
-                </div>
-            </div>
+            <h1 class="hero-title text-slate-900 mb-8 font-black leading-tight tracking-tighter">
+                Berhenti Membayar Mahal <br>
+                <span class="text-blue-600">Untuk Masalah Air Anda.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto mb-12">
+                Ubah sistem air industri dari beban biaya menjadi pasokan bernilai tanpa investasi awal (Zero-CAPEX).
+            </p>
         </section>
 
-        <section class="container mx-auto px-6 border-t border-slate-100 pt-32">
-            <div class="max-w-5xl mx-auto text-center mb-24">
-                <span class="eyebrow-blue mb-6 block">Model Bisnis Baru</span>
-                <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight tracking-tight">
-                    Ubah Air Dari Beban Menjadi<br>Aset Strategis
+        <section class="max-w-6xl mx-auto px-6">
+            <div class="problem-box shadow-2xl shadow-red-100/50">
+                <span class="eyebrow-red mb-6 block">Risiko Utilitas Industri</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 leading-tight mb-8">
+                    Sistem air Anda saat ini adalah <strong>lubang hitam finansial</strong>. Setiap biaya tak terukur pada utilitas dan kimia adalah profit yang terbuang sia-sia.
                 </h2>
-                <p class="text-lg md:text-xl text-slate-500 max-w-4xl mx-auto leading-relaxed">
-                    Kami menggeser sistem air industri Anda dari pusat biaya yang reaktif menjadi profit center yang terukur, patuh, dan bernilai finansial.
-                </p>
-            </div>
-
-            <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="value-card">
-                    <div class="card-icon">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+                    <div class="pain-point-item" onclick="openPainModal(1)">
+                        <span class="text-red-600 font-bold text-sm uppercase tracking-wider">01. Margin Keuntungan Terancam</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Kepatuhan Tanpa Celah</h3>
-                    <p class="text-slate-500 leading-relaxed">
-                        Mewujudkan kepatuhan regulasi lingkungan yang absolut. Bisnis Anda melangkah percaya diri tanpa risiko denda administratif atau gangguan operasional akibat pelanggaran baku mutu.
-                    </p>
+                    <div class="pain-point-item" onclick="openPainModal(2)">
+                        <span class="text-red-600 font-bold text-sm uppercase tracking-wider">02. Krisis Bahan Baku Air</span>
+                    </div>
+                    <div class="pain-point-item" onclick="openPainModal(3)">
+                        <span class="text-red-600 font-bold text-sm uppercase tracking-wider">03. Kerugian Akibat Downtime</span>
+                    </div>
+                    <div class="pain-point-item" onclick="openPainModal(4)">
+                        <span class="text-red-600 font-bold text-sm uppercase tracking-wider">04. Modal Mati di Infrastruktur</span>
+                    </div>
+                    <div class="pain-point-item" onclick="openPainModal(5)">
+                        <span class="text-red-600 font-bold text-sm uppercase tracking-wider">05. Ancaman Izin Operasional</span>
+                    </div>
+                    <div class="pain-point-item" onclick="openPainModal(6)">
+                        <span class="text-red-600 font-bold text-sm uppercase tracking-wider">06. Inefisiensi Biaya SDM</span>
+                    </div>
                 </div>
 
-                <div class="value-card">
-                    <div class="card-icon">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Transparansi SCADA-IoT</h3>
-                    <p class="text-slate-500 leading-relaxed">
-                        Teknologi pemantauan real-time yang membuat performa dan efisiensi kimia terlihat jelas. Hilangkan "area abu-abu" dalam pembukuan biaya air industri Anda.
-                    </p>
-                </div>
-
-                <div class="value-card">
-                    <div class="card-icon">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Model WaaS (Zero-CAPEX)</h3>
-                    <p class="text-slate-500 leading-relaxed">
-                        Peroleh kinerja sistem air kelas dunia tanpa menyentuh modal utama Anda. Invila menanggung seluruh investasi alat dan operasional, sementara Anda hanya membayar sesuai output layanan.
-                    </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-5 mt-8">
+                    <button class="px-12 py-5 bg-blue-600 text-white font-bold rounded-full shadow-lg hover:bg-blue-700 transition-all uppercase text-sm">Jadwalkan Factory Audit</button>
+                    <button class="px-12 py-5 border-2 border-slate-200 text-slate-800 font-bold rounded-full hover:bg-slate-50 transition-all uppercase text-sm">Pelajari Model WaaS</button>
                 </div>
             </div>
         </section>
@@ -475,12 +214,9 @@
 
     <div id="pain-modal">
         <div class="modal-overlay" onclick="closePainModal()"></div>
-        <div class="modal-content">
-            <div class="close-modal" onclick="closePainModal()">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </div>
-            <div class="modal-body" id="modal-body-content">
-                </div>
+        <div class="modal-content shadow-2xl">
+            <div class="close-modal" onclick="closePainModal()">✕</div>
+            <div class="modal-body" id="modal-body-content"></div>
         </div>
     </div>
 
@@ -492,37 +228,37 @@
         const painPointsData = {
             1: {
                 title: "Margin Keuntungan di Bawah Kendali Tarif",
-                content: "Mengandalkan suplai eksternal secara penuh menempatkan margin keuntungan Anda di bawah belas kasihan kebijakan tarif PDAM yang tidak bisa Anda kontrol. Setiap kenaikan tarif adalah pemotongan langsung pada profitabilitas bersih perusahaan."
+                content: "Mengandalkan suplai eksternal sepenuhnya menempatkan margin profit Anda di bawah kendali tarif PDAM. Setiap kenaikan tarif adalah pemotongan langsung pada profitabilitas bersih perusahaan Anda."
             },
             2: {
                 title: "Krisis Bahan Baku Air Industri",
-                content: "Regulasi kini membatasi pengambilan ABT secara masif. Tanpa sistem water recycle, perusahaan Anda terancam krisis bahan baku air atau terpaksa beralih ke sumber air eksternal dengan biaya yang jauh lebih mencekik."
+                content: "Pengetatan kuota ABT adalah ancaman nyata. Tanpa sistem water recycle, perusahaan terancam kelangkaan bahan baku air atau dipaksa membeli air eksternal dengan biaya yang jauh lebih mencekik."
             },
             3: {
-                title: "Kerugian Pendapatan Akibat Downtime",
-                content: "Kegagalan utilitas air bukan sekadar masalah teknis, melainkan kerugian pendapatan nyata. Berhentinya lini produksi, upah buruh yang terbuang, dan risiko penalti keterlambatan pengiriman adalah biaya yang sangat mahal bagi arus kas."
+                title: "Kerugian Pendapatan Nyata Akibat Downtime",
+                content: "Kegagalan utilitas air bukan sekadar masalah teknis, melainkan kerugian pendapatan. Lini produksi yang berhenti dan upah buruh yang terbuang adalah kebocoran arus kas yang sangat mahal."
             },
             4: {
-                title: "Hambatan Investasi (Modal Mati)",
-                content: "Dana miliaran yang 'terkunci' di infrastruktur air adalah modal mati. Bayangkan jika modal tersebut dialokasikan untuk penambahan mesin produksi utama atau riset pasar yang memberikan ROI langsung. Invila menghapus hambatan CAPEX ini seketika."
+                title: "Modal Mati di Infrastruktur (Opportunity Cost)",
+                content: "Dana miliaran yang 'terkunci' di infrastruktur air adalah modal mati. Bayangkan jika dana tersebut dialokasikan untuk ekspansi mesin produksi atau riset pasar yang memberikan ROI langsung."
             },
             5: {
-                title: "Ancaman Keberlangsungan Bisnis",
-                content: "Pelanggaran baku mutu limbah membawa risiko pencabutan izin operasional yang dapat menghentikan bisnis Anda dalam semalam. Di pasar global, kegagalan ESG (lingkungan) adalah kriteria eliminasi otomatis dari investor dan buyer utama."
+                title: "Ancaman Keberlangsungan Izin Operasional",
+                content: "Pelanggaran baku mutu limbah membawa risiko pencabutan izin operasional. Di pasar global saat ini, kegagalan standar ESG lingkungan adalah kriteria eliminasi bagi investor dan buyer utama."
             },
             6: {
-                title: "Inefisiensi Biaya SDM",
-                content: "Memaksa tim produksi mengelola kompleksitas kimia dan mekanis air hanya akan memecah fokus core business Anda. Ciptakan efisiensi dengan menyerahkan manajemen sistem pada ahlinya agar tim internal fokus pada pertumbuhan produk."
+                title: "Pemborosan Biaya SDM & Fokus Bisnis",
+                content: "Memaksa tim internal mengelola sistem air yang kompleks menciptakan inefisiensi SDM yang mahal. Serahkan manajemen pada ahlinya agar tim Anda fokus penuh pada pertumbuhan produk utama."
             }
         };
 
         function openPainModal(id) {
             const data = painPointsData[id];
             modalBody.innerHTML = `
-                <div class="eyebrow-red mb-4">Analisis Risiko</div>
-                <h3>${data.title}</h3>
-                <p class="mb-6">${data.content}</p>
-                <button onclick="closePainModal()" class="w-full sm:w-auto px-8 py-3 bg-slate-900 text-white font-bold rounded-xl text-xs uppercase tracking-widest hover:bg-slate-700 transition-colors">Tutup Penjelasan</button>
+                <div class="text-red-600 font-bold text-[10px] tracking-widest uppercase mb-4">Industrial Risk Analysis</div>
+                <h3 class="text-2xl font-black mb-6 text-slate-900">${data.title}</h3>
+                <p class="text-slate-600 leading-relaxed text-lg">${data.content}</p>
+                <button onclick="closePainModal()" class="mt-10 px-8 py-3 bg-slate-900 text-white font-bold rounded-xl text-xs uppercase tracking-widest hover:bg-blue-600 transition-all w-full sm:w-auto">SAYA PAHAM</button>
             `;
             modal.classList.add('active');
             document.body.classList.add('modal-open');
@@ -534,16 +270,10 @@
         }
 
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            window.scrollY > 20 ? header.classList.add('scrolled') : header.classList.remove('scrolled');
         });
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closePainModal();
-        });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePainModal(); });
     </script>
 </body>
 </html>
